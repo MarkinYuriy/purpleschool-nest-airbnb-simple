@@ -21,8 +21,12 @@
   },
   "dependencies": {
     "@nestjs/common": "^11.0.15",
+    "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.0.15",
+    "@nestjs/mongoose": "^11.0.3",
     "@nestjs/platform-express": "^11.0.15",
+    "dotenv": "^16.5.0",
+    "mongoose": "^8.13.2",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1"
   },
@@ -33,6 +37,7 @@
     "@types/express": "^5.0.0",
     "@types/jest": "^29.5.2",
     "@types/node": "^20.3.1",
+    "@types/mongoose":"^5.11.97",
     "@types/supertest": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",

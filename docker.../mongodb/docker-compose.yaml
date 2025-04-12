@@ -1,0 +1,15 @@
+services:
+  mongodb:
+    image: mongo:5
+    container_name: mongodb
+    restart: unless-stopped
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongodb_data:/data/admin
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+
+volumes:
+  mongodb_data:
