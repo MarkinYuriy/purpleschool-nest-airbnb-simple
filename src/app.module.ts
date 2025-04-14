@@ -2,11 +2,11 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { RoomModule } from './room/room.module';
-import { ScheduleModule } from './schedule/schedule.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserModule } from './user/user.module';
 import { getMongoConfig } from './configs/mongoConfig';
+import { BookingModule } from './booking/booking.module';
 
 @Module({
   imports: [
@@ -26,7 +26,7 @@ import { getMongoConfig } from './configs/mongoConfig';
       //'mongodb://localhost:27018/db'
     ),
     RoomModule,
-    ScheduleModule,
+    BookingModule,
     UserModule,
   ],
   controllers: [AppController],
