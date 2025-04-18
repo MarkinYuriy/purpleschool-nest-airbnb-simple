@@ -1,18 +1,14 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument, Schema as MongooseSchema } from 'mongoose';
 import { Room } from '../../room/models/room.model';
+import { BookingStatus } from '../../Common/common.enums';
 
 export type BookingDocument = HydratedDocument<Booking>;
 
-export enum BookingStatus {
-  active = 0,
-  canceled = 1,
-}
-
 @Schema()
 export class Booking {
-  @Prop({ type: MongooseSchema.Types.ObjectId })
-  _id: string;
+  // @Prop({ type: MongooseSchema.Types.ObjectId })
+  // _id: string;
   @Prop({ required: true, unique: true })
   date: Date;
   @Prop({ required: false, default: 0, nullable: false })

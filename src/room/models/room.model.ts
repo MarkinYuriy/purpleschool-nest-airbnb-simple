@@ -1,18 +1,17 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument, Schema as MongooseSchema } from 'mongoose';
+import { HydratedDocument, /*Schema as MongooseSchema*/ } from 'mongoose';
+import { RoomClass } from '../../Common/common.enums';
 
 export type RoomDocument = HydratedDocument<Room>;
 
-export enum RoomClass {
-  default = 1,
-  advanced = 2,
-  super = 3,
-}
-
 @Schema()
 export class Room {
-  @Prop({ type: MongooseSchema.Types.ObjectId })
-  _id: string;
+  // @Prop({
+  //   type: MongooseSchema.Types.ObjectId,
+  //   autoIncrement: true,
+  //   required: false,
+  // })
+  // _id: string;
   @Prop({ required: true, unique: true })
   num: number;
   @Prop({ required: false, default: 1, nullable: false })
