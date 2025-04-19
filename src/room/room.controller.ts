@@ -23,7 +23,11 @@ export class RoomController {
     this.roomService
       .getById(params.id)
       .then((room: Room) => {
-        return res.status(HttpStatus.OK).json(room);
+        if (room) {
+          return res.status(HttpStatus.OK).json(room);
+        } else {
+          return res.status(HttpStatus.BAD_REQUEST).json(`id not found`);
+        }
       })
       .catch((err) => {
         return res.status(HttpStatus.BAD_REQUEST).json({ error: err });
@@ -108,10 +112,5 @@ export class RoomController {
         return res.status(HttpStatus.BAD_REQUEST).json({ error: err.message });
       });
     // todo delete all booking for room
-    // if (room && room._id) {
-    //   return res.status(HttpStatus.OK).json(room);
-    // } else {
-    //   return res.status(HttpStatus.BAD_REQUEST).json(room);
-    // }
   }
 }

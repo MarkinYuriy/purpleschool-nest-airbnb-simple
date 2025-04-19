@@ -5,15 +5,17 @@ import { BookingStatus } from '../../Common/common.enums';
 
 export type BookingDocument = HydratedDocument<Booking>;
 
-@Schema()
+@Schema({ timestamps: true })
 export class Booking {
-  // @Prop({ type: MongooseSchema.Types.ObjectId })
-  // _id: string;
-  @Prop({ required: true, unique: true })
+  @Prop({ required: true, unique: true, type: Date })
   date: Date;
-  @Prop({ required: false, default: 0, nullable: false })
+  @Prop({ required: false, default: 0, nullable: false, enum: BookingStatus })
   status: BookingStatus;
-  @Prop({ required: true, type: MongooseSchema.Types.ObjectId, ref: Room.name })
+  @Prop({
+    required: false,
+    type: MongooseSchema.Types.ObjectId,
+    ref: Room.name,
+  })
   room: Room;
 }
 

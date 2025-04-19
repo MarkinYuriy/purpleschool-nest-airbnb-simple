@@ -24,7 +24,7 @@ export class RoomService {
     id: string,
     dto: CreateUpdateRoomDto,
   ): Promise<HydratedDocument<Room>> | null {
-    return this.roomModel.findByIdAndUpdate(id, dto).exec();
+    return this.roomModel.findByIdAndUpdate(id, dto,{ new: true }).exec();
   }
 
   async delete(id: string): Promise<HydratedDocument<Room>> | null {

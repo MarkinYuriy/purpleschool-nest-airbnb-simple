@@ -17,7 +17,7 @@ import { Response } from 'express';
 export class BookingController {
   constructor(private readonly bookingService: BookingService) {}
 
-  @Get('get/:roomId')
+  @Get('getByRoomId/:roomId')
   async getByRoomId(@Param() params: any, @Res() res: Response) {
     const bookings = await this.bookingService.getByRoomId(params.roomId);
     if (!bookings) {
@@ -27,9 +27,9 @@ export class BookingController {
     }
   }
 
-  @Get('get/:date')
+  @Get('getByDate/:date')
   async getByDate(@Param() params: any, @Res() res: Response) {
-    const bookings = await this.bookingService.getByDate(params.roomId);
+    const bookings = await this.bookingService.getByDate(params.date);
     if (!bookings) {
       return res.status(HttpStatus.BAD_REQUEST).json(bookings);
     } else {
