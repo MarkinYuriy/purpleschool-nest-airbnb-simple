@@ -53,7 +53,9 @@ export class BookingService {
 
   async update(id: string, dto: CreateUpdateBookingDto) {
     const newDto = new CreateUpdateBookingDto(dto.date, dto.room, dto.status);
-    return this.bookingModel.findByIdAndUpdate(id, newDto,{ new: true }).exec();
+    return this.bookingModel
+      .findByIdAndUpdate(id, newDto, { new: true })
+      .exec();
   }
 
   async delete(id: string): Promise<HydratedDocument<Booking>> | null {
