@@ -40,7 +40,7 @@ export class BookingController {
   @Post('create')
   async create(@Body() dto: CreateUpdateBookingDto, @Res() res: Response) {
     const booking = await this.bookingService.create(dto);
-    if (booking && booking._id) {
+    if (booking && booking) {
       return res.status(HttpStatus.CREATED).json(booking);
     } else {
       return res.status(HttpStatus.BAD_REQUEST).json(booking);

@@ -1,30 +1,23 @@
-import { BookingStatus } from '../../Common/common.enums';
+import { BOOKING_STATUS } from '../../Common/common.enums';
 
 export class CreateUpdateBookingDto {
-  private readonly _date: Date;
+  private readonly _date: string;
   private readonly _room: string;
-  private readonly _status?: BookingStatus;
+  private readonly _status?: BOOKING_STATUS;
 
-  constructor(date: string | Date, room: string, status?: BookingStatus) {
-    if (typeof date === 'string') {
-      const targetDate = new Date(date); // Or passed in from a DTO
-      const start = new Date(targetDate);
-      start.setHours(0, 0, 0, 0);
-      this._date = start;
-    } else {
-      date.setHours(0, 0, 0, 0);
-      this._date = date;
-    }
-
+  constructor(date: string, room: string, status?: BOOKING_STATUS) {
+    this._date = date;
     this._room = room;
     this._status = status;
   }
 
-  get status(): BookingStatus {
+
+
+  get status(): BOOKING_STATUS {
     return this._status;
   }
 
-  get date(): Date {
+  get date(): string {
     return this._date;
   }
 

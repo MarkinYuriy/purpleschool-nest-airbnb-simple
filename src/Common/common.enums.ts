@@ -1,9 +1,9 @@
-export enum RoomClass {
-  default = 1,
-  advanced = 2,
-  super = 3,
+export enum ROOM_CLASS {
+  DEFAULT = 'DEFAULT',
+  ADVANCED = 'ADVANCED',
+  SUPER = 'SUPER',
 }
-export enum BookingStatus {
-  active = 0,
-  canceled = 1,
+export enum BOOKING_STATUS {
+  ACTIVE = 'ACTIVE',
+  CANCELLED = 'CANCELLED',
 }
