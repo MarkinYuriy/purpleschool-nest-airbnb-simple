@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { RoomModule } from './room/room.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -11,10 +10,6 @@ import { BookingModule } from './booking/booking.module';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      // envFilePath: `${process.cwd()}/.development.env`,
-      // ignoreEnvFile: false,
-      // validatePredefined: true,
-      // expandVariables: true,
     }),
     MongooseModule.forRootAsync(
       {
@@ -28,6 +23,6 @@ import { BookingModule } from './booking/booking.module';
     BookingModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [],
 })
 export class AppModule {}

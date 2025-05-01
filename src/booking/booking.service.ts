@@ -2,8 +2,9 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { HydratedDocument, Model } from 'mongoose';
 import { Booking, BookingDocument } from './models/booking.model';
-import { CreateUpdateBookingDto } from './dto/createUpdateBookingDto';
+import { CreateBookingDto } from './dto/createBookingDto';
 import { RoomService } from '../room/room.service';
+import { UpdateBookingDto } from './dto/updateBookingDto';
 
 @Injectable()
 export class BookingService {
@@ -27,7 +28,7 @@ export class BookingService {
     return this.bookingModel.find({ date: date, room: roomId }).exec();
   }
 
-  async create(dto: CreateUpdateBookingDto) {
+  async create(dto: CreateBookingDto) {
     const room = await this.roomService.getById(dto.room);
     const date = new Date(dto.date);
     // date.setHours(0, 0, 0, 0);
@@ -48,7 +49,7 @@ export class BookingService {
     return newBooking;
   }
 
-  async update(id: string, dto: CreateUpdateBookingDto) {
+  async update(id: string, dto: UpdateBookingDto) {
     const date = new Date(dto.date);
     return this.bookingModel
       .findByIdAndUpdate(

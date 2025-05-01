@@ -1,0 +1,4 @@
+export enum BOOKING_STATUS {
+  ACTIVE = 'ACTIVE',
+  CANCELLED = 'CANCELLED',
+}

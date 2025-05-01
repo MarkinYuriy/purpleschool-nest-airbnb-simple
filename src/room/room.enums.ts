@@ -3,7 +3,3 @@ export enum ROOM_CLASS {
   ADVANCED = 'ADVANCED',
   SUPER = 'SUPER',
 }
-export enum BOOKING_STATUS {
-  ACTIVE = 'ACTIVE',
-  CANCELLED = 'CANCELLED',
-}

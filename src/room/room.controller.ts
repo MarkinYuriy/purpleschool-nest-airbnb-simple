@@ -10,9 +10,10 @@ import {
   Res,
 } from '@nestjs/common';
 import { RoomService } from './room.service';
-import { CreateUpdateRoomDto } from './dto/createUpdate.room.dto';
+import { CreateRoomDto } from './dto/create.room.dto';
 import { Response } from 'express';
 import { Room } from './models/room.model';
+import { UpdateRoomDto } from './dto/update.room.dto';
 
 @Controller('room')
 export class RoomController {
@@ -51,7 +52,7 @@ export class RoomController {
   }
 
   @Post('create')
-  async create(@Body() dto: CreateUpdateRoomDto, @Res() res: Response) {
+  async create(@Body() dto: CreateRoomDto, @Res() res: Response) {
     this.roomService
       .create(dto)
       .then((room) => {
@@ -71,7 +72,7 @@ export class RoomController {
     @Param()
     params: any,
     @Body()
-    dto: CreateUpdateRoomDto,
+    dto: UpdateRoomDto,
     @Res()
     res: Response,
   ) {

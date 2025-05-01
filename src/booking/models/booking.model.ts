@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument, Schema as MongooseSchema } from 'mongoose';
 import { Room } from '../../room/models/room.model';
-import { BOOKING_STATUS } from '../../Common/common.enums';
+import { BOOKING_STATUS } from '../booking.enums';
 
 export type BookingDocument = HydratedDocument<Booking>;
 

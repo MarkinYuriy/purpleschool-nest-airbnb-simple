@@ -2,7 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { HydratedDocument, Model } from 'mongoose';
 import { Room, RoomDocument } from './models/room.model';
 import { InjectModel } from '@nestjs/mongoose';
-import { CreateUpdateRoomDto } from './dto/createUpdate.room.dto';
+import { CreateRoomDto } from './dto/create.room.dto';
+import { UpdateRoomDto } from './dto/update.room.dto';
 
 @Injectable()
 export class RoomService {
@@ -16,15 +17,15 @@ export class RoomService {
     return this.roomModel.find({}).exec();
   }
 
-  async create(dto: CreateUpdateRoomDto): Promise<HydratedDocument<Room>> {
+  async create(dto: CreateRoomDto): Promise<HydratedDocument<Room>> {
     return this.roomModel.create(dto);
   }
 
   async update(
     id: string,
-    dto: CreateUpdateRoomDto,
+    dto: UpdateRoomDto,
   ): Promise<HydratedDocument<Room>> | null {
-    return this.roomModel.findByIdAndUpdate(id, dto,{ new: true }).exec();
+    return this.roomModel.findByIdAndUpdate(id, dto, { new: true }).exec();
   }
 
   async delete(id: string): Promise<HydratedDocument<Room>> | null {

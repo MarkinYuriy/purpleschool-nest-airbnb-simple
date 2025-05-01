@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument /*Schema as MongooseSchema*/ } from 'mongoose';
-import { ROOM_CLASS } from '../../Common/common.enums';
+import { ROOM_CLASS } from '../room.enums';
 
 export type RoomDocument = HydratedDocument<Room>;
 
