@@ -1,0 +1,5 @@
+export enum ROOM_CLASS {
+  DEFAULT = 'DEFAULT',
+  ADVANCED = 'ADVANCED',
+  SUPER = 'SUPER',
+}

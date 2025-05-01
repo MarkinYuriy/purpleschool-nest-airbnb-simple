@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument /*Schema as MongooseSchema*/ } from 'mongoose';
-import { RoomClass } from '../../Common/common.enums';
+import { ROOM_CLASS } from '../room.enums';
 
 export type RoomDocument = HydratedDocument<Room>;
 
@@ -8,8 +8,13 @@ export type RoomDocument = HydratedDocument<Room>;
 export class Room {
   @Prop({ required: true, unique: true })
   num: number;
-  @Prop({ required: false, default: 1, nullable: false, enum: RoomClass })
-  class: RoomClass;
+  @Prop({
+    required: false,
+    default: ROOM_CLASS.DEFAULT,
+    nullable: false,
+    enum: ROOM_CLASS,
+  })
+  class: ROOM_CLASS;
   @Prop({ required: false, default: false, nullable: false })
   balcony: boolean;
 }

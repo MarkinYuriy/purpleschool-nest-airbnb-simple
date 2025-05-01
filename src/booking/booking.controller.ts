@@ -9,9 +9,10 @@ import {
   Post,
   Res,
 } from '@nestjs/common';
-import { CreateUpdateBookingDto } from './dto/createUpdateBookingDto';
+import { CreateBookingDto } from './dto/createBookingDto';
 import { BookingService } from './booking.service';
 import { Response } from 'express';
+import { UpdateBookingDto } from './dto/updateBookingDto';
 
 @Controller('booking')
 export class BookingController {
@@ -38,9 +39,9 @@ export class BookingController {
   }
 
   @Post('create')
-  async create(@Body() dto: CreateUpdateBookingDto, @Res() res: Response) {
+  async create(@Body() dto: CreateBookingDto, @Res() res: Response) {
     const booking = await this.bookingService.create(dto);
-    if (booking && booking._id) {
+    if (booking && booking) {
       return res.status(HttpStatus.CREATED).json(booking);
     } else {
       return res.status(HttpStatus.BAD_REQUEST).json(booking);
@@ -50,7 +51,7 @@ export class BookingController {
   @Patch('update/:id')
   async update(
     @Param() params: any,
-    @Body() dto: CreateUpdateBookingDto,
+    @Body() dto: UpdateBookingDto,
     @Res() res: Response,
   ) {
     const booking = await this.bookingService.update(params.id, dto);
@@ -64,7 +65,7 @@ export class BookingController {
   @Delete('delete/:id')
   async delete(
     @Param() params: any,
-    @Body() dto: CreateUpdateBookingDto,
+    @Body() dto: CreateBookingDto,
     @Res() res: Response,
   ) {
     const booking = await this.bookingService.delete(params.id);
